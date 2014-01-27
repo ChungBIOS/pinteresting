@@ -11,6 +11,13 @@
 <body>
 	<%= render 'layouts/header' %>
 	<div class = "container">
+		<!-- flash message for devise -->
+		<!-- no equal sign as it doesn't show on a page -->
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+		<% end %>
 		<%= yield %>
 	</div>
 </body>
