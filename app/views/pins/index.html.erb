@@ -11,6 +11,9 @@
   </thead>
 
   <tbody>
+<!--     #no need to for = sign after % as it doesn't show on page
+    #the |pin| is a variable that is assigned for the loop
+    #between DO and END is the block -->
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.description %></td>
