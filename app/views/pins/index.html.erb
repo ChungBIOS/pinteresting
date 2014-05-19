@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -11,15 +12,20 @@
   </thead>
 
   <tbody>
-<!--     #no need to for = sign after % as it doesn't show on page
+<!--     #no need to for = sign after % as it doesn't show on page for the first @pins.each
+    .each method creates a loop
     #the |pin| is a variable that is assigned for the loop
     #between DO and END is the block -->
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.description %></td>
+        <td><%= pin.user.email if pin.user %></td> 
+        <!-- could also use pin.user.try(:email) -->
         <td><%= link_to 'Show', pin %></td>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if pin.user == current_user %>
+          <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+          <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +33,6 @@
 
 <br>
 
-<%= link_to 'New Pin', new_pin_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Pin', new_pin_path %>
+<% end %>
