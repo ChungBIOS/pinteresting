@@ -7,7 +7,10 @@ class PinsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all
+    #the methods allow you to do things on the object at the beginning
+    @pins = Pin.all.order(created_at: :desc).limit(10)
+    # alternative syntax @pins = Pin.all.order("created_at: :desc")
+
   end
 
   # GET /pins/1
