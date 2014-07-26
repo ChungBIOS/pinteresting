@@ -8,8 +8,8 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     #the methods allow you to do things on the object at the beginning
-    @pins = Pin.all.order(created_at: :desc).limit(10)
-    # alternative syntax @pins = Pin.all.order("created_at: :desc")
+    @pins = Pin.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 4)
+    # alternative syntax @pins = Pin.all.order("created_at: :desc").limit(10)
 
   end
 
