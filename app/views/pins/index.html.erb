@@ -1,3 +1,6 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
+
 <div id="pins" class="transitions-enabled">
   <!--     #no need to for = sign after % as it doesn't show on page for the first @pins.each
   .each method creates a loop
@@ -17,7 +20,7 @@
                 <span class="glyphicon glyphicon-edit"></span> Edit
               <% end %>
               <%= link_to pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <span class="glyphicon glyphicon-trash"></span>
+                <span class="glyphicon glyphicon-trash  "></span>
                 Destroy
               <% end %>
            </div>
